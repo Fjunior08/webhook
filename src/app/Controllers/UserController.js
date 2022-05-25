@@ -17,7 +17,7 @@ class UserController {
       
     async store (req, res) {
 
-      const event = req.body;
+      
     
       //   res.status(404).json({
       //     error: true,
@@ -50,14 +50,15 @@ class UserController {
         //   API_KEY: data.api_key,
         //   PEDIDO: data.custom_fields.pedido
         //  })
+        const event = req.body;
+
         if(event.activity_type == 'route-optimized' ) {
           const { route_id } = req.body;
           //{ CD_LOJA, DT_ROTA, CODCLI,  NOMECLI, TRACKING_NUMBER, ROUTE_ID, ROUTE_DESTINATION_ID, API_KEY, PEDIDO } = rota;
-          
-
           const data = { ROUTE_ID: route_id }
           //{ CD_LOJA, DT_ROTA, CODCLI, NOMECLI, TRACKING_NUMBER, ROUTE_ID, ROUTE_DESTINATION_ID, API_KEY, PEDIDO }
       
+        
     /** 
       * Inserir dados no banco Mysql
       */
@@ -176,12 +177,12 @@ class UserController {
                             
       //       })
       //     }).catch(error=>{console.log(error)})     
-        }catch(err){
-          console.log(err)
+      //   }catch(err){
+      //     console.log(err)
         
-      // } 
-           
+      // // } 
+  
 }
 }
-
+}
 module.exports = new UserController();
