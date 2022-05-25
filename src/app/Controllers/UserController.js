@@ -18,21 +18,21 @@ class UserController {
     async store (req, res) {
 
       const event = req.body;
-      if(event.activity_type != 'route-optimized' ) {
-        res.status(404).json({
-          error: true,
-          message: "requisição invalida"
-        })
-      }else{
-        res.status(200).json({
-          error: false,
-          message: "requisição valida"
-        })
-       }
+    
+      //   res.status(404).json({
+      //     error: true,
+      //     message: "requisição invalida"
+      //   })
+      // }else{
+      //   res.status(200).json({
+      //     error: false,
+      //     message: "requisição valida"
+      //   })
+      //  }
       
-      const route_id = req.body.route_id;
-      const r4mAPI = '7C065C7459059F5B676FE486E6B544A4';
-      const name = await axios.get(`https://api.route4me.com/api.v4/route.php?api_key=${r4mAPI}&&route_id=${route_id}`)
+      // const route_id = req.body.route_id;
+      // const r4mAPI = '7C065C7459059F5B676FE486E6B544A4';
+      // const name = await axios.get(`https://api.route4me.com/api.v4/route.php?api_key=${r4mAPI}&&route_id=${route_id}`)
 
     /**
      * json de resposta da URL 
@@ -50,8 +50,8 @@ class UserController {
         //   API_KEY: data.api_key,
         //   PEDIDO: data.custom_fields.pedido
         //  })
-     
-          //const { route_id } = req.body;
+        if(event.activity_type == 'route-optimized' ) {
+          const { route_id } = req.body;
           //{ CD_LOJA, DT_ROTA, CODCLI,  NOMECLI, TRACKING_NUMBER, ROUTE_ID, ROUTE_DESTINATION_ID, API_KEY, PEDIDO } = rota;
           
 
