@@ -176,9 +176,9 @@ class UserController {
                             
       //       })
       //     }).catch(error=>{console.log(error)})     
-      //   }catch(err){
-      //     console.log(err)
-      //   }
+        }catch(err){
+          console.log(err)
+        
       // } 
            
 }
