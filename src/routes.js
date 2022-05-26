@@ -4,7 +4,6 @@ const routes = express.Router();
 
 
 routes.post("/user",  UserController.store);
-
 routes.get("/user", UserController.show);
 
 
