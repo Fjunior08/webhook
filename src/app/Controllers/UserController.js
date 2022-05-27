@@ -8,27 +8,30 @@ const axios = require('axios');
  */
 class UserController {
 
-    show(req, res) {
-        var users = ["junior", "pecista", "kaizen"]        
-        return res.status(200).json({
-            error: false,
-            users
-        })
-    }
+  show(req, res) {
+    res.send({ 
+      API: 'Pecista - Distribuição e Representação de Autopeças',
+      Version: '0.0.1',
+      DocumentationURL: 'https://github.com/PecistaTecnologia'
+    });
+  };
+  
+    // show(req, res) {
+    //     var users = ["junior", "pecista", "kaizen"]        
+    //     return res.status(200).json({
+    //         error: false,
+    //         users
+    //     })
+    // }
       
-    async store (req, res, next) {
+    async store (req, res) {
 
       const event = req.body;
 
         if(event.activity_type === 'route-optimized' ) {
           res.status(200).json({
-            erro: false,
+            error: false,
             message: "valid request"            
-          })
-        }else{
-          res.status(404).json({
-            erro: true,
-            message: "invalid request"
           })
         }
 
