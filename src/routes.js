@@ -3,7 +3,7 @@ const UserController = require('./app/Controllers/UserController');
 const routes = express.Router(); 
 
 
-routes.get("/user", UserController.show);
+routes.get("/", UserController.show);
 routes.post("/user",  UserController.store);
 
 
