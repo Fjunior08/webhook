@@ -15,20 +15,35 @@ class UserController {
     }
 
     async store (req, res) {
-      console.log(req.body);
+      
+      const rotas_url = []
+            
+        
+       const route_id = req.body.route_id;
+        const r4mAPI = '7C065C7459059F5B676FE486E6B544A4';
+        const name = await axios.get(`https://api.route4me.com/api.v4/route.php?api_key=${r4mAPI}&&route_id=${route_id}`)
+        
+        rotas_url.push(name)
 
-      // const event = req.body;
-      //   if(event.activity_type == 'route-optimized') { 
-      //     res.status(200).json({
-      //       error: false,
-      //       message: "valid request"
-      //     })        
-      // }else{
-      //   res.status(202).json({
-      //     error: false,
-      //     message: "valid request"
-      //   })
-      // }
-}}
+        async function getRotas(){
+        
+          const fetchrotas = rotas_url.map((name) => axios.get(name)
+          .then((name)=>{
+            return name.data;
+            })
+          )
+          const rm = r4m.create(fetchrotas)
+          .then((values) => {
+            //res.send(values)
+            console.log(rm)
+          })
+        }
 
+        getRotas();
+
+
+
+    }
+
+}
 module.exports = new UserController();

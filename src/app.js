@@ -4,8 +4,7 @@ const routes = require('./routes');
 const morgan = require('morgan');
 require('../src/config/db');
 const bodyParser = require('body-parser');
-// const { store } = require('./app/Controllers/UserController');
-        
+
 
 class App {
     
@@ -33,23 +32,21 @@ class App {
             const event = req.body;
             if(event.activity_type == 'route-optimized') { 
             res.status(200).json({
-            //    error: false,
-            //    message: 'ok'
-             })
-        this.app.use(cors());
-        next(event.store);
+                error: false,
+                message: 'ok'
+            })
+            this.app.use(cors());
+            next(event.store);
         }else{
             res.status(202).json({
             //   error: false,
             //   message: "valid request"
-        })
+            })      
         }
-    })
-}
-
+        })
+    }
     routes () {
-        this.app.use(routes);  
-        
+        this.app.use(routes);
     }
 }
 
