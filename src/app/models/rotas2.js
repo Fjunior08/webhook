@@ -19,7 +19,7 @@ const r4m = sequelize.define('r4m_rotas2s', {
     
   },
   CODCLI: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       
     },
   NOMECLI: {
