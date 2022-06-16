@@ -32,6 +32,10 @@ class App {
         try{
             const event = req.body;
             if(event.activity_type == 'route-optimized') { 
+                res.status(200).json({
+                    message: "ok"
+                }) 
+            
             this.app.use(cors());
             next(event.store);
             }else{

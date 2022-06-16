@@ -52,9 +52,7 @@ class UserController {
                         message: 'inserido com sucesso'
                         })
                     })
-                    res.status(200).json({
-                        message: "ok"
-                    })     
+                        
             
         }
         }catch(err){
