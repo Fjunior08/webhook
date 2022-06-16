@@ -28,7 +28,6 @@ const r4m = sequelize.define('r4m_rotas2s', {
     },
   TRACKING_NUMBER: {
       type: Sequelize.STRING(8),
-      allowNull: true
       
     },
   ROUTE_ID: {

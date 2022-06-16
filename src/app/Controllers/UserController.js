@@ -46,10 +46,8 @@ class UserController {
                     API_KEY: data.null,	
                     PEDIDO: data.custom_fields["pedido"],                
                 })
-                
-            async function gravaRota(name){    
 
-                await r4m.create(rota, (error) => {
+                 r4m.create(rota, (error) => {
                     if(error) return res.status(400).json({
                         error: true,
                         message: "erro ao gravar no banco"
@@ -58,12 +56,9 @@ class UserController {
                         error: false,
                         message: 'inserido com sucesso'
                         })                                      
-                    })           
-                                      
-            }
-            gravaRota(name) 
+                    }) 
             
-        }                        
+            }                        
             res.status(200).json({
                 error: false,
                 message: 'ok'
