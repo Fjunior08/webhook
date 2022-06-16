@@ -1,7 +1,8 @@
 //const r4m_rotas = require('../models/Rotas');
 const r4m = require('../models/rotas2');
 const axios = require('axios');
-const fs = require('fs');
+const bodyParser = require('body-parser');
+
 /**
  * Class controle app
  * 
@@ -14,13 +15,12 @@ class UserController {
         })
     }
 
-    async store (req, res, next) {              
-                    
+    async store (req, res, next) {                      
         try {
-
             const event = req.body;
                if(event.activity_type == 'route-optimized') {
-
+                
+                
             const r4mAPI = '7C065C7459059F5B676FE486E6B544A4';
             const route_id = req.body.route_id;        
             const member_id = req.body.member_id;
@@ -62,14 +62,18 @@ class UserController {
             res.status(200).json({
                 error: false,
                 message: 'ok'
-        })             
-        next(event.store);
+        })
         }else{
             res.status(202).json({
                 error: false,
                 message: 'ok'
             })   
-        }            
+        }
+        
+        
+
+
+        
         }catch (error) {
         // Trate o erro aqui.
         console.log('Whoops! Houve um erro.', error.message || error)
