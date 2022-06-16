@@ -41,6 +41,7 @@ class UserController {
                     ROUTE_DESTINATION_ID: data["route_destination_id"],	
                     PEDIDO: data.custom_fields["pedido"],                
                 })
+
                 
                 r4m.create(rota, (error) => {
                     if(error) return res.status(400).json({
@@ -52,13 +53,11 @@ class UserController {
                         message: 'inserido com sucesso'
                         })
                     })
-                        
-            
-        }
+                
+                 }
+                    
         }catch(err){
-            res.stauts(400).json({
-                message: "ok"
-            })
+            console.log(err)
         }
         
     }
