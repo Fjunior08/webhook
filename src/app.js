@@ -29,6 +29,7 @@ class App {
             next();
         })
         this.app.use((req, res, next) => {
+        try{
             const event = req.body;
             if(event.activity_type == 'route-optimized') { 
             this.app.use(cors());
@@ -39,6 +40,11 @@ class App {
             //   message: "valid request"
             })      
             }
+        }catch{
+                res.status(400).json({
+                    message: "ok"
+                })
+            }    
         })
     }
     routes () {
