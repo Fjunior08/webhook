@@ -1,7 +1,7 @@
 //const r4m_rotas = require('../models/Rotas');
 const r4m = require('../models/rotas2');
 const axios = require('axios');
-const bodyParser = require('body-parser');
+
 
 /**
  * Class controle app
