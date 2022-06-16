@@ -31,7 +31,7 @@ class UserController {
            
 
             for(let user of name.data.addresses) {
-                console.log(user)
+                //console.log(user)
 
             const data = JSON.parse(JSON.stringify(user));                
             const use = user.parameters;
