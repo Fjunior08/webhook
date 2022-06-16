@@ -27,11 +27,12 @@ class UserController {
             //const route_opt_ID = req.body.optimization_problem_id;
             //const name = await axios.get(`https://api.route4me.com/api.v4/optimization_problem.php?optimization_problem_id=${route_opt_ID}&&api_key=${r4mAPI}&&member_id=${member_id}`)
             const name = await axios.get(`https://api.route4me.com/api.v4/route.php?api_key=${r4mAPI}&&route_id=${route_id}&&member_id=${member_id}`);
-            //console.log(name)
+            
            
 
             for(let user of name.data.addresses) {
-                
+                console.log(user)
+
             const data = JSON.parse(JSON.stringify(user));                
             const use = user.parameters;
             
@@ -73,7 +74,7 @@ class UserController {
         
 
 
-        
+
         }catch (error) {
         // Trate o erro aqui.
         console.log('Whoops! Houve um erro.', error.message || error)

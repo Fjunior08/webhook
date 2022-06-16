@@ -32,7 +32,6 @@ const r4m = sequelize.define('r4m_rotas2s', {
     },
   ROUTE_ID: {
       type: Sequelize.STRING(32),
-      allowNull: true
       
   },
   ROUTE_DESTINATION_ID: {
