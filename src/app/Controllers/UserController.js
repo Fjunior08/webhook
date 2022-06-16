@@ -8,25 +8,29 @@ const fs = require('fs');
  */
 class UserController {
 
-    show(req, res) {
+    show(req, res, next) {
         return res.status(200).json({
             users: "ok"
         })
     }
 
-    async store (req, res) {
-            
+    async store (req, res, next) {              
+                    
         try {
-            
+
+            const event = req.body;
+               if(event.activity_type == 'route-optimized') {
+
             const r4mAPI = '7C065C7459059F5B676FE486E6B544A4';
             const route_id = req.body.route_id;        
             const member_id = req.body.member_id;
             //const route_opt_ID = req.body.optimization_problem_id;
             //const name = await axios.get(`https://api.route4me.com/api.v4/optimization_problem.php?optimization_problem_id=${route_opt_ID}&&api_key=${r4mAPI}&&member_id=${member_id}`)
             const name = await axios.get(`https://api.route4me.com/api.v4/route.php?api_key=${r4mAPI}&&route_id=${route_id}&&member_id=${member_id}`);
+            //console.log(name)
            
 
-        for ( let user of name.data.addresses ) {
+            for(let user of name.data.addresses) {
                 
             const data = JSON.parse(JSON.stringify(user));                
             const use = user.parameters;
@@ -38,12 +42,14 @@ class UserController {
                     NOMECLI: data["alias"],		
                     TRACKING_NUMBER: data["tracking_number"],
                     ROUTE_ID: data["route_id"],			
-                    ROUTE_DESTINATION_ID: data["route_destination_id"],	
+                    ROUTE_DESTINATION_ID: data["route_destination_id"],
+                    API_KEY: data.null,	
                     PEDIDO: data.custom_fields["pedido"],                
                 })
-
                 
-                r4m.create(rota, (error) => {
+            async function gravaRota(name){    
+
+                await r4m.create(rota, (error) => {
                     if(error) return res.status(400).json({
                         error: true,
                         message: "erro ao gravar no banco"
@@ -51,16 +57,30 @@ class UserController {
                         return res.status(200).json({
                         error: false,
                         message: 'inserido com sucesso'
-                        })
-                    })
-                
-                 }
-                    
-        }catch(err){
-            console.log(err)
-        }
-        
+                        })                                      
+                    })           
+                                      
+            }
+            gravaRota(name) 
+            
+        }                        
+            res.status(200).json({
+                error: false,
+                message: 'ok'
+        })             
+        next(event.store);
+        }else{
+            res.status(202).json({
+                error: false,
+                message: 'ok'
+            })   
+        }            
+        }catch (error) {
+        // Trate o erro aqui.
+        console.log('Whoops! Houve um erro.', error.message || error)
+            res.status(404).json({
+            })      
+        }          
     }
-
 }
 module.exports = new UserController();

@@ -7,57 +7,48 @@ const r4m = sequelize.define('r4m_rotas2s', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
-    allowNull: false,
+    allowNull: true,
     primaryKey: true
   },
   CD_LOJA: {
-    type: Sequelize.INTEGER,
-    
+    type: Sequelize.INTEGER(11),
+    allowNull: true
   },
   DT_ROTA: {
-    type: Sequelize.DATE,
-    
+    type: Sequelize.DATE(11),
+    allowNull: true
   },
   CODCLI: {
-      type: Sequelize.STRING,
-      
+      type: Sequelize.STRING(6),
+      allowNull: true
     },
   NOMECLI: {
-      type: Sequelize.STRING,
-      
+      type: Sequelize.STRING(50),
+      allowNull: true
     },
   TRACKING_NUMBER: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(8),
+      allowNull: true
       
     },
   ROUTE_ID: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(32),
+      allowNull: true
       
   },
   ROUTE_DESTINATION_ID: {
-      type: Sequelize.INTEGER,
-      
+      type: Sequelize.INTEGER(11),
+      allowNull: true
   },
   API_KEY: {
-      type: Sequelize.STRING,
-      
+      type: Sequelize.STRING(32),
+      allowNull: true
     },
   PEDIDO: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(8),
+    allowNull: null
     
   },
-  // STATUS: {
-  //   type: Sequelize.INTEGER,
-  // },
-  // ETA: {
-  //   type: Sequelize.DATE,
-  // },
-  // CD_MOTORISTA: {
-  //   type: Sequelize.INTEGER,
-  // },
-  //  MODIFIED_DATE: {
-  //   type: Sequelize.DATE,
-  // }
   
   });
 

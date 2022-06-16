@@ -24,33 +24,10 @@ class App {
             res.header("Access-Controll-Allow-Headers", "Access, Content-type, Authorization, Acept, Origin, x-Requested-with");
             res.header("user-agent", "Mozilla/4.0");
             
-            
+
             this.app.use(cors());
             next();
-        })
-        this.app.use((req, res, next) => {
-        try{
-            const event = req.body;
-            if(event.activity_type == 'route-optimized') { 
-                res.status(200).json({
-                    error: false,
-                    message: 'ok'
-                })
-            
-            this.app.use(cors());
-            next(event.store);
-            }else{
-            res.status(202).json({
-            //   error: false,
-            //   message: "valid request"
-            })      
-            }
-        }catch{
-                res.status(400).json({
-                    message: "ok"
-                })
-            }    
-        })
+        })       
     }
     routes () {
         this.app.use(routes);
