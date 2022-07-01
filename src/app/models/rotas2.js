@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../../config/db');
 
-
-
+/**
+ * Table Structure
+ */
 const r4m = sequelize.define('r4m_rotas2s', {
   id: {
     type: Sequelize.INTEGER,
@@ -44,16 +45,12 @@ const r4m = sequelize.define('r4m_rotas2s', {
     },
   PEDIDO: {
     type: Sequelize.STRING(8),
-    allowNull: null
-    
+    allowNull: null    
   },
   
   });
-
   //Criar a tabela se não existir
   //r4m.sync();
-  //Alter table
+  //Altera a tabela
   //r4m.sync({ Alter: true})
-  
-
 module.exports = r4m;

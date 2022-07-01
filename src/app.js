@@ -5,7 +5,9 @@ const morgan = require('morgan');
 require('../src/config/db');
 const bodyParser = require('body-parser');
 
-
+/**
+ * Classe App
+ */
 class App {
     
     constructor() {
@@ -14,7 +16,10 @@ class App {
         this.middlewares();
         this.routes();
     }
-
+    /**
+     * Cabeçalho de Requisição
+     * 
+     */
     middlewares(req, res, next) {
         this.app.use(express.json());
         this.app.use(morgan(":method :url :response-time"));
@@ -29,6 +34,9 @@ class App {
             next();
         })       
     }
+    /**
+     * Controle Routes
+     */
     routes () {
         this.app.use(routes);
     }
