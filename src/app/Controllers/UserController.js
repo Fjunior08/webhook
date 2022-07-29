@@ -45,7 +45,7 @@ class UserController {
                     PEDIDO: data.custom_fields["pedido"],                
                 })
                 /**
-                 * Insert Into DB
+                 * Insert data DB
                  */
                  r4m.create(rota, (error) => {
                     if(error) return res.status(400).json({
